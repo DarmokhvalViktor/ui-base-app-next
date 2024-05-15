@@ -17,6 +17,7 @@ import LoginPage from 'pageProviders/Login';
 import PageContainer from 'pageProviders/components/PageContainer';
 import pageURLs from 'constants/pagesURLs';
 import SecretPage from 'pageProviders/Secret';
+import Cars from "pageProviders/Cars"
 import ThemeProvider from 'misc/providers/ThemeProvider';
 import UserProvider from 'misc/providers/UserProvider';
 
@@ -25,6 +26,8 @@ import Header from '../components/Header';
 import IntlProvider from '../components/IntlProvider';
 import MissedPage from '../components/MissedPage';
 import SearchParamsConfigurator from '../components/SearchParamsConfigurator';
+import CarDetailsProvider from "../../pageProviders/CarDetails";
+import CarForm from "../../pages/carDetails/containers/CarForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -78,6 +81,18 @@ function App() {
                     <Route
                       element={<SecretPage />}
                       path={`${pageURLs[pages.secretPage]}`}
+                    />
+                    <Route
+                        element={<Cars />}
+                        path={`${pageURLs[pages.cars]}`}
+                    />
+                    <Route
+                      element={<CarDetailsProvider/>}
+                      path={`${pageURLs[pages.cars]}/:id`}
+                    />
+                    <Route
+                        element={<CarForm />}
+                        path={`${pageURLs[pages.cars]}/create`}
                     />
                     <Route
                       element={(
