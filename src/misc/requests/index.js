@@ -15,6 +15,9 @@ const addAxiosInterceptors = ({
   axios.interceptors.response.use(
     (response) => response.data,
     (error) => {
+      if(error.response.status === 400) {
+          throw error.response.data;
+      }
       if (error.response.data
         .some(beError => beError?.code === 'INVALID_TOKEN')
       ) {
